@@ -1,0 +1,41 @@
+---
+
+name: workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      
+      test:
+        description: 'test'
+        required: false
+        default: 'test'
+      
+      download_artifact:
+        description: 'download previous run artifact (yes/no)'
+        required: true
+        default: 'no'
+
+jobs:
+  start_workflow:
+    name: workflow - ${{ github.ref }} - ${{ github.event.inputs.test }}
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: List Files
+        run: find . -iname "*.*"
+
+      - name: Run Test Python Script
+        uses: ./.github/actions/python-script-runner
+        with:
+          script-path: 'python ./pipeline/py/test.py'
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+            name: jokes
+            path: ./jokes.txt
