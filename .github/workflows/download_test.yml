@@ -1,4 +1,4 @@
-name: workflow
+name: download test
 
 on:
   workflow_dispatch:
@@ -23,7 +23,7 @@ jobs:
       - name: Download Workflow Artifcts
         run: |
           curl --request POST \
-          --url https://api.github.com/repos/ckavidas/${{ github.repository }}/actions/artifacts \
+          --url https://api.github.com/repos/${{ github.repository }}/actions/artifacts \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
           --header 'content-type: application/json' \
           --header 'accept: application/vnd/github.v3+json' \
