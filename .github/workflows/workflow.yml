@@ -34,6 +34,11 @@ jobs:
         with:
           script-path: 'python ./pipeline/py/test.py'
 
+      - name: Run artifact download test
+        uses: ./.github/actions/python-script-runner
+        with:
+          script-path: 'python ./pipeline/py/download_test.py'
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
