@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Download Workflow Artifcts
         run: |
-          curl --request POST \
+          curl \
           --url https://api.github.com/repos/${{ github.repository }}/actions/artifacts \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          --header 'accept: application/vnd/github.v3+json' \
+          --header "Accept: application/vnd.github.v3+json"
