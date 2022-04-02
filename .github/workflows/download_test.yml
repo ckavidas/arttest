@@ -25,4 +25,8 @@ jobs:
           curl \
           --url https://api.github.com/repos/${{ github.repository }}/actions/artifacts/201371766/zip \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          --header "Accept: application/vnd.github.v3+json"
+          --header "Accept: application/vnd.github.v3+json" \
+          --output test.zip
+          
+      - name: list files
+        run: find . -iname "*.*"
