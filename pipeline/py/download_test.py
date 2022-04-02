@@ -1,12 +1,5 @@
 import requests as r
 
-info = {
-  repo: "arttest",
-  user: "ckavidas",
-  headers: {"Accept":"application/vnd.github.v3+json"},
-  baseurl: "https://api.github.com/repos",
-}
-
 def get_artifacts_list(info):
   uri = "{baseurl}/{user}/{repo}/actions/artifacts".format(
     baseurl=info['baseurl'],
@@ -22,10 +15,10 @@ def get_artifacts_list(info):
 
 def main():
   info = {
-    repo: "arttest",
-    user: "ckavidas",
-    headers: {"Accept":"application/vnd.github.v3+json"},
-    baseurl: "https://api.github.com/repos",
+    "repo": "arttest",
+    "user": "ckavidas",
+    "headers": {"Accept":"application/vnd.github.v3+json"},
+    "baseurl": "https://api.github.com/repos",
   }
   test = get_artifacts_list(info)
   print(test)
