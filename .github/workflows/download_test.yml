@@ -29,4 +29,4 @@ jobs:
           --output test.zip
           
       - name: list files
-        run: find . -iname "*.*"
+        run: ls -la
