@@ -15,7 +15,7 @@ on:
         default: 'no'
 
 jobs:
-  create_commit:
+  download-test:
     runs-on: ubuntu-latest 
     permissions:
       issues: write 
@@ -25,6 +25,4 @@ jobs:
           curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/actions/artifacts \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          --header 'content-type: application/json' \
           --header 'accept: application/vnd/github.v3+json' \
-          --fail
