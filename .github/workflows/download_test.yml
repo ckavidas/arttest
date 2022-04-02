@@ -1,0 +1,30 @@
+name: workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      
+      test:
+        description: 'test'
+        required: false
+        default: 'test'
+      
+      download_artifact:
+        description: 'download previous run artifact (yes/no)'
+        required: true
+        default: 'no'
+
+jobs:
+  create_commit:
+    runs-on: ubuntu-latest 
+    permissions:
+      issues: write 
+    steps:
+      - name: Download Workflow Artifcts
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/ckavidas/${{ github.repository }}/actions/artifacts \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --header 'accept: application/vnd/github.v3+json' \
+          --fail
