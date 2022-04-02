@@ -22,3 +22,6 @@ def main():
   }
   test = get_artifacts_list(info)
   print(test)
+
+if __name__ == "__main__":
+  main()
