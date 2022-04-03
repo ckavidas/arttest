@@ -14,8 +14,12 @@ def get_artifacts_list(info):
   }
   return results
 
-def download_artifact(info, artifact_id):
-  pass
+def download_artifact(info, download_link):
+  headers=info['headers']
+  zip_file = r.get(download_link, headers=headers)
+  with open("downloaded_from_python.zip", "wb") as f:
+    f.write(zip_file.content)
+    f.close()
 
 def main():
   env = dict(environ)
@@ -29,9 +33,13 @@ def main():
     "baseurl": "https://api.github.com/repos",
   }
   artifacts = get_artifacts_list(info)['JSON']['artifacts']
+  jokezips = []
   for artifact in artifacts:
     if artifact['name'] == 'jokes':
-      print({artifact['id']:artifact['archive_download_url']})
+      jokezips.append(artifact['archive_download_url'])
+  print("lets try to download the first zip")
+  download_artifact(info, jokezips[0])
+
 
 if __name__ == "__main__":
   main()
