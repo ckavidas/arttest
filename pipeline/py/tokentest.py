@@ -1,7 +1,8 @@
 import os
 
 env = dict(os.environ).keys()
-print(env)
+token = env['INPUT_ACCESS-TOKEN']
+print(token[-1])
 
 
 #scpath = os.environ.get('SCRIPT-PATh')
