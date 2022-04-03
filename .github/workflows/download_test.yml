@@ -20,6 +20,8 @@ jobs:
     permissions:
       issues: write 
     steps:
+      - name: Checkout
+        uses: actions/checkout@master
       - name: Test Token
         run: python ./pipeline/py/tokentest.py
       - name: Download Workflow Artifcts
