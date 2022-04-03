@@ -5,6 +5,10 @@ inputs:
     description: "Script Path"
     required: true
 
+  access-token:
+    description: "access token"
+    required: true
+
   p1:
     description: "Param 1"
     required: false
@@ -26,6 +30,7 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.script-path }}
+    - ${{ inputs.access-token }}
     - ${{ inputs.p1 }}
     - ${{ inputs.p2 }}
     - ${{ inputs.p3 }}
