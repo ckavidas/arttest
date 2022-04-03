@@ -1,4 +1,4 @@
 import os
 
-token = os.getenv('GITHUB_TOKEN')
+token = os.environ.get('GITHUB_TOKEN')
 print(type(token))
