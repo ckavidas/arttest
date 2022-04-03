@@ -28,8 +28,9 @@ def main():
     "headers": {"Accept":"application/vnd.github.v3+json"},
     "baseurl": "https://api.github.com/repos",
   }
-  test = get_artifacts_list(info)
-  print(test)
+  artifacts = get_artifacts_list(info)['JSON']['artifacts']
+  jokezips = [{artifact['id']:artifact['archive_down_url]} for artifact in artifacts if artifact['name'] == 'jokes']
+  print(jokezips[0])
 
 if __name__ == "__main__":
   main()
