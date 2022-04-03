@@ -4,18 +4,23 @@ inputs:
   script-path:
     description: "Script Path"
     required: true
+
   access-token:
-    description: "Script Path"
+    description: "access-token"
     required: true
+
   p1:
     description: "Param 1"
     required: false
+
   p2:
     description: "Param 2"
     required: false
+
   p3:
     description: "Param 3"
     required: false
+
   p4:
     description: "Param 4"
     required: false
