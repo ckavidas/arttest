@@ -2,10 +2,6 @@ name: download test
 
 on:
   workflow_dispatch:
-    inputs:
-      gth-token:
-        description: 'gth token'
-        default: ${{ github.token }}
       test:
         description: 'test'
         required: false
