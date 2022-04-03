@@ -26,7 +26,7 @@ jobs:
         uses: ./.github/actions/python-script-runner
         with:
           script-path: 'python ./pipeline/py/tokentest.py'
-          access-token: ${ secrets.GITHUB_TOKEN }
+          access-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Download Workflow Artifcts
         run: |
           curl \
