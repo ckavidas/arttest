@@ -3,7 +3,9 @@ name: download test
 on:
   workflow_dispatch:
     inputs:
-      
+      gth-token:
+        description: 'gth token'
+        default: ${{ github.token }}
       test:
         description: 'test'
         required: false
@@ -26,7 +28,7 @@ jobs:
         uses: ./.github/actions/python-script-runner
         with:
           script-path: 'python ./pipeline/py/tokentest.py'
-          access-token: ${{ secrets.GITHUB_TOKEN }}
+          access-token: ${{ github.token }}
       - name: Download Workflow Artifcts
         run: |
           curl \
