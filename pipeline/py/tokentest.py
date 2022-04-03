@@ -1,12 +1,16 @@
 import os
 
-scpath = os.environ.get('script-path')
-token = os.environ.get('access-token')
+env = dict(os.environ).keys()
+print(env)
 
-print(type(scpath))
-print(type(token))
-if scpath:
-  print(scpath)
 
-if token:
-  print(token[-1])
+#scpath = os.environ.get('SCRIPT-PATh')
+#token = os.environ.get('access-token')
+
+#print(type(scpath))
+#rint(type(token))
+#if scpath:
+#  print(scpath)
+
+#if token:
+# print(token[-1])
