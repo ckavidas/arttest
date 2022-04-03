@@ -23,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Test Token
-        run: python ./pipeline/py/tokentest.py
+        run: python ./pipeline/py/tokentest.py ${{ secrets.GITHUB_TOKEN }}
       - name: Download Workflow Artifcts
         run: |
           curl \
