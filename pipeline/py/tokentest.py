@@ -1,7 +1,12 @@
 import os
-import sys
 
-print(len(sys.argv))
-print(sys.argv[1][-1])
-token = os.environ.get('GITHUB_TOKEN')
+scpath = os.environ.get('script-path')
+token = os.environ.get('access-token')
+
+print(type(scpath))
 print(type(token))
+if scpath:
+  print(scpath)
+
+if token:
+  print(token[-1])
