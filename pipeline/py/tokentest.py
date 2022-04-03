@@ -1,7 +1,7 @@
 import os
 
 env = dict(os.environ).keys()
-token = env['INPUT_ACCESS-TOKEN']
+token = dict(os.environ)['INPUT_ACCESS-TOKEN']
 print(token[-1])
 
 
