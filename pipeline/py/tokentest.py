@@ -1,17 +1,35 @@
-import os
+import requests as r
+from os import environ
 
-env = dict(os.environ).keys()
-token = dict(os.environ)['INPUT_ACCESS-TOKEN']
-print(token[-1])
+def get_artifacts_list(info):
+  uri = "{baseurl}/{user}/{repo}/actions/artifacts".format(
+    baseurl=info['baseurl'],
+    user=info['user'],
+    repo=info['repo'],
+  )
+  req = r.get(uri, headers=info['headers'])
+  results = {
+    "Status_Code": req.status_code,
+    "JSON": req.json(),
+  }
+  return results
 
+def download_artifact(info, artifact_id):
+  pass
 
-#scpath = os.environ.get('SCRIPT-PATh')
-#token = os.environ.get('access-token')
+def main():
+  env = dict(environ)
+  if 'INPUT_ACCESS-TOKEN' in env.keys():
+    print("Access Token Key Exists")
+    print(env['INPUT_ACCESS-TOKEN'][-1])
+  info = {
+    "repo": "arttest",
+    "user": "ckavidas",
+    "headers": {"Accept":"application/vnd.github.v3+json"},
+    "baseurl": "https://api.github.com/repos",
+  }
+  test = get_artifacts_list(info)
+  print(test)
 
-#print(type(scpath))
-#rint(type(token))
-#if scpath:
-#  print(scpath)
-
-#if token:
-# print(token[-1])
+if __name__ == "__main__":
+  main()
