@@ -29,8 +29,9 @@ def main():
     "baseurl": "https://api.github.com/repos",
   }
   artifacts = get_artifacts_list(info)['JSON']['artifacts']
-  jokezips = [{artifact['id']:artifact['archive_down_url]} for artifact in artifacts if artifact['name'] == 'jokes']
-  print(jokezips[0])
+  for artifact in artifacts:
+    if artifact['name'] == 'jokes':
+      print({artifact['id']:artifact['archive_download_url']})
 
 if __name__ == "__main__":
   main()
