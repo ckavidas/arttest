@@ -5,7 +5,7 @@ inputs:
     description: "Script Path"
     required: true
   access-token:
-    description: "github access token"
+    description: "Script Path"
     required: true
   p1:
     description: "Param 1"
