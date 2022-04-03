@@ -22,8 +22,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      - name: Test Token
-        run: python ./pipeline/py/tokentest.py ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Test Python Script
+        uses: ./.github/actions/python-script-runner
+        with:
+          script-path: 'python ./pipeline/py/tokentest.py'
+          access-token: ${ GITHUB_TOKEN }
       - name: Download Workflow Artifcts
         run: |
           curl \
